@@ -1,4 +1,4 @@
-import { FetchClient } from '../fetchClient'
+import { FetchClient } from '../'
 import { QueryClient } from '@tanstack/react-query'
 import { Model } from '../types/Model'
 
