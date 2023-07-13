@@ -1,13 +1,13 @@
 {
   "name": "fetch-rest-ts",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "Typescript wrapper over fetch client with centralised schema definition",
-  "main": "lib/src/index.js",
-  "types": "lib/src/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "tsc -p tsconfig.lib.json",
-    "prepublish": "npm run build"
+    "build": "tsc -p tsconfig.lib.json && cp package.json ./lib/src",
+    "publish": "npm run build && npm publish ./lib/src"
   },
   "repository": {
     "type": "git",
