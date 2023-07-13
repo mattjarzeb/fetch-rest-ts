@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "build": "tsc -p tsconfig.lib.json && cp package.json ./lib/src",
-    "publish": "npm run build && npm publish ./lib/src"
+    "pub": "npm run build && npm publish ./lib/src"
   },
   "repository": {
     "type": "git",
