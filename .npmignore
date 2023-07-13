@@ -1,0 +1,6 @@
+.idea
+src
+node_modules
+tsconfig.*json
+jest.config.ts
+.eslintrc.json

@@ -1,0 +1,51 @@
+{
+  "name": "fetch-rest-ts",
+  "version": "0.0.1",
+  "description": "Typescript wrapper over fetch client with centralised schema definition",
+  "main": "lib/src/index.js",
+  "types": "lib/types",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc -p tsconfig.lib.json",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattjarzeb/schema-fetch-ts.git"
+  },
+  "keywords": [
+    "typescript",
+    "ts",
+    "fetch",
+    "schema",
+    "rest"
+  ],
+  "author": "Mateusz Jarzębski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattjarzeb/schema-fetch-ts/issues"
+  },
+  "homepage": "https://github.com/mattjarzeb/schema-fetch-ts#readme",
+  "dependencies": {
+    "deepmerge": "^4.3.1",
+    "lodash": "^4.17.21",
+    "qs": "^6.11.2",
+    "tslib": "^2.6.0"
+  },
+  "prettier": "eslint-config-teacode/prettier",
+  "devDependencies": {
+    "@tanstack/react-query": "^4.29.19",
+    "@types/jest": "^29.5.3",
+    "@types/lodash": "^4.14.195",
+    "@types/node": "^20.4.2",
+    "@types/qs": "^6.9.7",
+    "eslint-config-teacode": "^2.0.0",
+    "jest": "^29.6.1",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^4"
+  }
+}
