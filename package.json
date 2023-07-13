@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "Typescript wrapper over fetch client with centralised schema definition",
   "main": "lib/src/index.js",
-  "types": "lib/src",
+  "types": "lib/src/index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "tsc -p tsconfig.lib.json",
