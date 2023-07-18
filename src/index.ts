@@ -26,10 +26,8 @@ export class FetchClient<TModel extends Model> {
     }
   }
 
-  protected handleError(res: Response, json: any) {
-    if (!res.ok) {
-      throw new Error(json.message || res.statusText)
-    }
+  protected handleError(res: Response, json: any, originalReq: { url: string; fetchInit: RequestInit }) {
+    throw new Error(json.message || res.statusText)
   }
 
   protected getFetchOptions = async (options: RequestInit = {}): Promise<RequestInit> => {
@@ -72,13 +70,18 @@ export class FetchClient<TModel extends Model> {
     const { body, pathParams } = this.extractBodyContext(config)
     const _path = replaceParams((path as string).toString(), pathParams)
 
-    const res = await fetch(`${this.baseURL}/${_path}`, {
+    const url = `${this.baseURL}/${_path}`
+    const fetchInit: RequestInit = {
       method: 'POST',
       body: JSON.stringify(body),
       ..._options,
-    })
+    }
+
+    const res = await fetch(url, fetchInit)
     const json = await res.json()
-    await this.handleError(res, json)
+    if (!res.ok) {
+      await this.handleError(res, json, { url, fetchInit })
+    }
     return json
   }
 
@@ -96,13 +99,18 @@ export class FetchClient<TModel extends Model> {
     const { body, pathParams } = this.extractBodyContext(config)
     const _path = replaceParams((path as string).toString(), pathParams)
 
-    const res = await fetch(`${this.baseURL}/${_path}`, {
+    const url = `${this.baseURL}/${_path}`
+    const fetchInit: RequestInit = {
       method: 'PATCH',
       body: JSON.stringify(body),
       ..._options,
-    })
+    }
+
+    const res = await fetch(url, fetchInit)
     const json = await res.json()
-    await this.handleError(res, json)
+    if (!res.ok) {
+      await this.handleError(res, json, { url, fetchInit })
+    }
     return json
   }
 
@@ -115,12 +123,16 @@ export class FetchClient<TModel extends Model> {
 
     const _path = replaceParams((path as string).toString(), pathParams || {})
 
-    const res = await fetch(`${this.baseURL}/${_path}`, {
+    const url = `${this.baseURL}/${_path}`
+    const fetchInit: RequestInit = {
       method: 'DELETE',
       ..._options,
-    })
+    }
+    const res = await fetch(url, fetchInit)
     const json = await res.json()
-    await this.handleError(res, json)
+    if (!res.ok) {
+      await this.handleError(res, json, { url, fetchInit })
+    }
     return json
   }
 
@@ -139,12 +151,16 @@ export class FetchClient<TModel extends Model> {
 
     const _path = replaceParams((path as string).toString(), query || {})
 
-    const res = await fetch(`${this.baseURL}/${_path}?${qs.stringify(query)}`, {
+    const url = `${this.baseURL}/${_path}?${qs.stringify(query)}`
+    const fetchInit: RequestInit = {
       method: 'GET',
       ..._options,
-    })
+    }
+    const res = await fetch(url, fetchInit)
     const json = await res.json()
-    await this.handleError(res, json)
+    if (!res.ok) {
+      await this.handleError(res, json, { url, fetchInit })
+    }
     return json
   }
 }
