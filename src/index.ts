@@ -28,7 +28,7 @@ export class FetchClient<TModel extends Model> {
 
   protected handleError(res: Response, json: any) {
     if (!res.ok) {
-      throw new Error(json)
+      throw new Error(json.message || res.statusText)
     }
   }
 

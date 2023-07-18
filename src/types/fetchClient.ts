@@ -12,9 +12,9 @@ export type WithParams<
   : TMethod extends keyof TObj[TPath]
   ? TKey extends keyof TObj[TPath][TMethod]
     ? TObj[TPath][TMethod][TKey]
-    : TKey extends keyof TObj[TPath]
-    ? TObj[TPath][TKey]
     : unknown
+  : TPath extends `${infer S1 extends ''}/${infer S2}/${infer S3}`
+  ? WithParams<TObj[`/${S2}`], `/${S3}`, TKey, TMethod>
   : unknown
 
 export type ValidKey<T> = T extends keyof InnerSchema ? false : T extends BuildInMethods ? false : true
