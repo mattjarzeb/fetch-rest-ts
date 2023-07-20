@@ -147,9 +147,9 @@ export class FetchClient<TModel extends Model> {
   ): Promise<WithParams<TModel, TPath, 'output', 'get'>> {
     const _options = await this.getFetchOptions(options)
 
-    const { query } = this.extractQueryContext(config || {})
+    const { query, pathParams } = this.extractQueryContext(config || {})
 
-    const _path = replaceParams((path as string).toString(), query || {})
+    const _path = replaceParams((path as string).toString(), pathParams || {})
 
     const url = `${this.baseURL}/${_path}?${qs.stringify(query)}`
     const fetchInit: RequestInit = {
