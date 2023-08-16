@@ -157,7 +157,8 @@ export class FetchClient<TModel extends Model> {
       ..._options,
     }
     const res = await fetch(url, fetchInit)
-    const json = await res.json()
+    const text = await res.text()
+    const json = text ? JSON.parse(text) : undefined
     if (!res.ok) {
       await this.handleError(res, json, { url, fetchInit })
     }
