@@ -3,6 +3,6 @@ const pathWithoutParams = (path: string | symbol | number) =>
     .toString()
     .split('/')
     .filter((e) => !e.startsWith(':'))
-    .join()
+    .join('/')
 
 export default pathWithoutParams
