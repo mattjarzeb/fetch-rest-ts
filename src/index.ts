@@ -154,7 +154,10 @@ export class FetchClient<TModel extends Model> {
 
     const _path = replaceParams((path as string).toString(), pathParams || {})
 
-    const url = `${this.baseURL}/${_path}?${qs.stringify(query)}`
+    const queryStrContext = qs.stringify(query)
+    const queryStr = queryStrContext ? `?${qs.stringify(query)}` : ''
+
+    const url = `${this.baseURL}/${_path}${queryStr}`
     const fetchInit: RequestInit = {
       method: 'GET',
       ..._options,
