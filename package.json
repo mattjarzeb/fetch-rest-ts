@@ -1,6 +1,6 @@
 {
   "name": "fetch-rest-ts",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Typescript wrapper over fetch client with centralised schema definition",
   "main": "index.js",
   "types": "index.d.ts",
